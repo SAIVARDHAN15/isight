@@ -7,18 +7,40 @@
     android:background="@color/isight_black"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/statusText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="24dp"
-        android:textColor="@color/isight_white"
-        android:textSize="18sp"
+    <android.opengl.GLSurfaceView
+        android:id="@+id/glSurfaceView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/isight_status_scrim"
+        android:padding="16dp"
+        android:textColor="@color/isight_white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="iSight — Phase 1 OK" />
+        tools:text="ARCore session: READY" />
+
+    <TextView
+        android:id="@+id/poseText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/isight_status_scrim"
+        android:fontFamily="monospace"
+        android:padding="16dp"
+        android:textColor="@color/isight_white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Tracking: TRACKING&#10;X: 0.12  Y: 0.00  Z: -0.45&#10;Heading: 87°&#10;Center distance: 1.84 m" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

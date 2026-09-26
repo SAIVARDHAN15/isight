@@ -4,7 +4,14 @@
     <string name="requesting_camera_permission">Requesting camera permission…</string>
     <string name="camera_permission_denied">Camera permission denied.\niSight cannot start without it.</string>
     <string name="installing_arcore">Installing/updating Google Play Services for AR…</string>
-    <string name="arcore_ready">ARCore session: READY\n(resumed, tracking not yet visualized)</string>
+    <string name="arcore_ready">ARCore session: READY</string>
     <string name="camera_unavailable">Camera unavailable.\nIs another app using it?</string>
     <string name="arcore_unavailable_prefix">ARCore unavailable:\n%1$s</string>
+
+    <string name="pose_tracking">Tracking: %1$s\nX: %2$.2f  Y: %3$.2f  Z: %4$.2f\nHeading: %5$.0f°\nCenter distance: %6$s</string>
+    <string name="pose_not_tracking">Tracking: %1$s (%2$s)</string>
+
+    <string name="distance_meters">%.2f m</string>
+    <string name="distance_unavailable">no estimate yet</string>
+    <string name="distance_unsupported">unsupported on this device</string>
 </resources>

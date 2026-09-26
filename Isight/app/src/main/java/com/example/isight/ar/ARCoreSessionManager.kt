@@ -41,6 +41,10 @@ class ARCoreSessionManager(private val activity: Activity) {
     var session: Session? = null
         private set
 
+    /** Set once the session is configured; true if this device supports the Depth API. */
+    var isDepthSupported = false
+        private set
+
     private var installRequested = false
 
     fun tryCreateSession(): ArSessionResult {
@@ -91,6 +95,14 @@ class ARCoreSessionManager(private val activity: Activity) {
         val config = Config(session)
         config.focusMode = Config.FocusMode.AUTO
         config.updateMode = Config.UpdateMode.LATEST_CAMERA_IMAGE
+
+        isDepthSupported = session.isDepthModeSupported(Config.DepthMode.AUTOMATIC)
+        if (isDepthSupported) {
+            config.depthMode = Config.DepthMode.AUTOMATIC
+        } else {
+            Log.w(TAG, "Depth API not supported on this device; distance readouts will be unavailable")
+        }
+
         session.configure(config)
     }
 

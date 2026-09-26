@@ -1,4 +1,5 @@
 <resources>
     <color name="isight_black">#FF000000</color>
     <color name="isight_white">#FFFFFFFF</color>
+    <color name="isight_status_scrim">#B0000000</color>
 </resources>
