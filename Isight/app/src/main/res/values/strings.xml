@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">iSight</string>
+    <string name="phase1_status">iSight — Phase 1 OK\nProject builds and runs.</string>
+</resources>
