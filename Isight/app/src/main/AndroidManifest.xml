@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <!-- This app cannot function without AR; only ARCore-supported devices
          will see it in the Play Store. -->
@@ -19,9 +21,13 @@
              before this app can be opened. -->
         <meta-data android:name="com.google.ar.core" android:value="required" />
 
+        <!-- Locked to portrait: YOLO preprocessing (ImagePreprocessor) assumes
+             a fixed 90-degree sensor-to-upright rotation that only holds for
+             this orientation. See ImagePreprocessor's ORIENTATION note. -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

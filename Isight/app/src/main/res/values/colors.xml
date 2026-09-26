@@ -2,4 +2,5 @@
     <color name="isight_black">#FF000000</color>
     <color name="isight_white">#FFFFFFFF</color>
     <color name="isight_status_scrim">#B0000000</color>
+    <color name="isight_accent">#FF4FC3F7</color>
 </resources>

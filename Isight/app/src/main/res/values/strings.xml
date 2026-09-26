@@ -14,4 +14,18 @@
     <string name="distance_meters">%.2f m</string>
     <string name="distance_unavailable">no estimate yet</string>
     <string name="distance_unsupported">unsupported on this device</string>
+
+    <string name="yolo_loading">Loading YOLO model…</string>
+    <string name="yolo_loaded">YOLO model loaded: %1$d input(s), %2$d output(s), %3$d labels\n(full tensor details in Logcat, tag YoloDetector)</string>
+    <string name="yolo_load_failed">YOLO model FAILED to load:\n%1$s: %2$s\nDid you copy yolov11_det.tflite into app/src/main/assets/?</string>
+    <string name="yolo_status_live">YOLO: %1$d input(s), %2$d output(s), %3$d labels\nLive raw detections (score ≥ threshold): %4$d\n(RAW classId/score lines in Logcat, tag YoloDetector)</string>
+
+    <string name="model_input_preview_description">Preview of the image exactly as it is fed into the YOLO model</string>
+
+    <string name="listen_button_label">Listen for command</string>
+    <string name="isight_off">iSight: OFF (hold Volume Down ~3s to start)</string>
+    <string name="isight_on">iSight: ON (hold Volume Down ~4s to stop)</string>
+    <string name="isight_holding">iSight: %1$s… %2$d%%</string>
+    <string name="isight_holding_start">starting</string>
+    <string name="isight_holding_stop">stopping</string>
 </resources>

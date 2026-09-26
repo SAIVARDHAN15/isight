@@ -16,6 +16,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Phase 11: bounding-box overlay, drawn over the camera preview. -->
+    <com.example.isight.ui.DetectionOverlayView
+        android:id="@+id/detectionOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/glSurfaceView"
+        app:layout_constraintEnd_toEndOf="@id/glSurfaceView"
+        app:layout_constraintStart_toStartOf="@id/glSurfaceView"
+        app:layout_constraintTop_toTopOf="@id/glSurfaceView" />
+
+    <!-- Phase 28/30: iSight ON/OFF status + volume-hold progress. -->
+    <TextView
+        android:id="@+id/iSightStatusText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/isight_status_scrim"
+        android:padding="16dp"
+        android:textColor="@color/isight_accent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="iSight: OFF (hold Volume Down ~3s to start)" />
+
     <TextView
         android:id="@+id/statusText"
         android:layout_width="0dp"
@@ -26,8 +51,62 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iSightStatusText"
         tools:text="ARCore session: READY" />
+
+    <TextView
+        android:id="@+id/modelStatusText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/isight_status_scrim"
+        android:padding="16dp"
+        android:textColor="@color/isight_white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusText"
+        tools:text="Loading YOLO model…" />
+
+    <!-- Phase 15/24: live fused object tracks + safety tier. -->
+    <TextView
+        android:id="@+id/tracksText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/isight_status_scrim"
+        android:fontFamily="monospace"
+        android:padding="16dp"
+        android:textColor="@color/isight_white"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/modelStatusText"
+        tools:text="Safety: BLUE - chair right, use caution.&#10;chair 0.71  1.8m  RIGHT  id=3&#10;person 0.82  3.2m  CENTER  id=7" />
+
+    <!-- Phase 7 debug aid: exactly what the model input looks like, so
+         orientation/color/letterbox correctness can be checked by eye. -->
+    <ImageView
+        android:id="@+id/modelInputPreview"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="12dp"
+        android:background="@color/isight_status_scrim"
+        android:contentDescription="@string/model_input_preview_description"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tracksText" />
+
+    <TextView
+        android:id="@+id/navigationText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/isight_status_scrim"
+        android:padding="16dp"
+        android:textColor="@color/isight_white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/poseText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Navigation: Target=Kitchen Status=NAVIGATING" />
 
     <TextView
         android:id="@+id/poseText"
@@ -38,9 +117,22 @@
         android:padding="16dp"
         android:textColor="@color/isight_white"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/listenButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Tracking: TRACKING&#10;X: 0.12  Y: 0.00  Z: -0.45&#10;Heading: 87°&#10;Center distance: 1.84 m" />
+
+    <!-- Phase 21/25: manual voice-command trigger (dev/debug convenience;
+         the volume-hold gesture is the intended hands-free path for the
+         visually-impaired end user — see VolumeButtonTrigger). -->
+    <Button
+        android:id="@+id/listenButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/listen_button_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
